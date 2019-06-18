@@ -92,6 +92,7 @@
 			<div class="section-title">
 				<h2>PRODUK TERBARU</h2>
 			</div>
+      <a href="{{ route('semua-produk') }}">Lihat semua</a>
 			<div class="product-slider owl-carousel">
           @foreach ($produk as $produk)
           <form class="" action="{{ route('keranjang') }}" method="post">

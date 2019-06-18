@@ -61,3 +61,4 @@ Route::group(['middleware'=>'verified'], function(){
 });
 
 Route::get('/produk/{slug}/{id}', 'ProdukController@index')->name('detil-produk');
+Route::get('/semua-produk', 'ProdukController@semuaproduk')->name('semua-produk');

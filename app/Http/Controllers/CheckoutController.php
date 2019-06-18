@@ -15,7 +15,7 @@ class CheckoutController extends Controller
     public function index(Request $request){
     	$pemesanan = new Pemesanan;
     	$idp = Carbon\Carbon::now();
-		$idp->setTimezone('Asia/Bangkok');
+		  $idp->setTimezone('Asia/Bangkok');
     	$pemesanan->id = $idp->format('Ymdhis');
     	$pemesanan->id_user = Auth::user()->id;
     	$pemesanan->id_alamat = $request['id_alamat'];
