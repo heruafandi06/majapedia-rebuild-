@@ -1,0 +1,21 @@
+.btn-danger, .btn-danger:hover{
+  background-color:#f51167;
+  border-color:white;
+}
+.btn-link, .btn-link:hover{
+  color:#f51167;
+}
+.form-control:focus{
+  border-color:#f51167;
+}
+a, a:hover{
+  color:#f51167;
+}
+
+.section-title a:hover{
+  text-decoration:underline;
+}
+
+.up-item a:hover{
+  text-decoration:underline;
+}
