@@ -17,15 +17,18 @@
 <!-- Category section -->
 <section class="category-section spad">
   <div class="container">
+    <form class="" action="" method="get">
     <div class="row">
       <div class="col-lg-3 order-2 order-lg-1">
         <div class="filter-widget">
           <h2 class="fw-title">Categories</h2>
-          <ul class="category-menu">
             @foreach ($kategori as $kategori)
-            <li><a href="#">{{ $kategori->nama_kategori }}
+              <?php $k = Input::has('kategori') ? Input::get('kategori'): [] ; ?>
+              <div class="form-check">
+                <input type="checkbox" name="kategori[]" value="{{ $kategori->id }}" onchange="this.form.submit()" {{ in_array($kategori->id, $k) ? 'checked' : '' }}>
+                <label for="">{{ $kategori->nama_kategori }}</label>
+              </div>
             @endforeach
-          </ul>
         </div>
         <div class="filter-widget mb-0">
           <h2 class="fw-title">refine by</h2>
@@ -129,19 +132,17 @@
       </div>
 
       <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
-        <div class="row">
-          <div class="col-lg-4 col-sm-6 mb-3">
-              <form class="" action="" method="get">
-                <select class="form-control" name="sortir" id="sortir" onchange="this.form.submit()">
-                  <option value="">Sortir</option>
-                  <option value="sortByNameAsc">Nama A-Z</option>
-                  <option value="sortByNameDesc">Nama Z-A</option>
-                </select>
-              </form>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <select class="form-control" name="sort" onchange="this.form.submit()">
+              <option value="terbaru">Terbaru</option>
+              <option value="produk-asc">Produk A-Z</option>
+              <option value="produk-desc">Produk Z-A</option>
+            </select>
           </div>
         </div>
         <div class="row">
-          @foreach ($produk as $produk)
+          @forelse ($produk as $produk)
           <div class="col-lg-4 col-sm-6 mb-3">
             <div class="product-item">
               <div class="pi-pic">
@@ -159,13 +160,16 @@
   						</div><br>
             </div>
           </div>
-          @endforeach
+          @empty
+          Produk kosong
+          @endforelse
           <div class="text-center w-100 pt-3">
             <button class="site-btn sb-line sb-dark">LOAD MORE</button>
           </div>
         </div>
       </div>
     </div>
+    </form>
   </div>
 </section>
 @endsection
